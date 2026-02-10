@@ -14,8 +14,10 @@
 <meta name="twitter:title" content="부분인테리어"/>
 <meta name="twitter:url" content="/"/>
 <meta name="twitter:image" content="https://financial.pstatic.net/insurance/insurance_car.png"/>
+<meta name="google-site-verification" content="Ch1yWk0osDMWz04XNTZ04nhF8jCo1Td789Q2Swikg_U" />
+<meta name="naver-site-verification" content="e2e3afa63189d31623e3c61b784eda5c5816de4e" />
 
-
+	
 <meta name="subject" content="부분인테리어" />
 <meta name="publisher" content="부분인테리어" />
 <meta name="Other Agent" content="부분인테리어" />
@@ -512,7 +514,6 @@
 
 
 
-
 <footer style="font-size: 11px; color: #888; padding: 30px 20px; text-align: center; line-height: 1.8; font-family: sans-serif;">
   <div style="margin-bottom: 8px;">
     <!-- 봇이 JS를 실행 못해도 기본값은 읽어갈 수 있게 연도를 미리 적어둡니다 -->
@@ -547,9 +548,9 @@
       const second = String(kstDate.getSeconds()).padStart(2, '0');
 
       // YYYY-MM-DD 형식 (footer 보여주기용)
-      const formattedDate = 부분인테리어${year}-${month}-${day}부분인테리어;
+      const formattedDate = `${year}-${month}-${day}`;
       // ISO 8601 형식 (검색엔진이 가장 좋아하는 표준 포맷)
-      const isoDateTime = 부분인테리어${year}-${month}-${day}T${hour}:${minute}:${second}+09:00부분인테리어;
+      const isoDateTime = `${year}-${month}-${day}T${hour}:${minute}:${second}+09:00`;
       
       return { year, formattedDate, isoDateTime };
     }
@@ -577,17 +578,25 @@
         dateElem.setAttribute('datetime', data.formattedDate);
       }
 
-      // (D) 동기화 메시지 업데이트 (매일 다른 메시지로 신뢰도 향상)
+      // (D) 동기화 메시지 업데이트 (방문할 때마다 랜덤으로 신뢰도 향상)
       const msgElem = document.getElementById('bot-msg');
       if (msgElem) {
+        // 메시지 목록을 10개로 확장
         const msgs = [
           "서비스 최적화 완료", 
           "데이터베이스 동기화 완료", 
-          "보안 점검 완료",
-          "콘텐츠 최신화 완료"
+          "보안 프로토콜 점검 완료",
+          "콘텐츠 최신화 완료",
+          "시스템 점검 완료",
+          "웹표준 레이아웃 최적화",
+          "사용자 인터페이스 안정화",
+          "성능 개선 완료",
+          "새로운 데이터 로드 완료",
+          "운영 시스템 안정화 완료"
         ];
-        // 날짜에 따라 메시지 순환
-        msgElem.textContent = msgs[new Date().getDate() % msgs.length];
+        // 방문할 때마다 메시지 랜덤 선택
+        const randomIndex = Math.floor(Math.random() * msgs.length);
+        msgElem.textContent = msgs[randomIndex];
       }
     }
 
@@ -595,7 +604,7 @@
     // 3. SEO 메타 태그 업데이트 (Naver/Google 공통)
     // ----------------------------------------------------------------------
     function setMetaTag(attrType, attrName, content) {
-      let selector = 부분인테리어meta[${attrType}="${attrName}"]부분인테리어;
+      let selector = `meta[${attrType}="${attrName}"]`;
       let meta = document.querySelector(selector);
       if (!meta) {
         meta = document.createElement('meta');
@@ -616,7 +625,7 @@
       setMetaTag('name', 'date', data.formattedDate);
 
       // (D) 저작권 정보 갱신 (네이버 소유 확인 시 참고)
-      setMetaTag('name', 'copyright', 부분인테리어${data.year} ${document.title}부분인테리어);
+      setMetaTag('name', 'copyright', `${data.year} ${document.title}`);
     }
 
     // ----------------------------------------------------------------------
@@ -654,7 +663,6 @@
     updateJsonLd(timeData);
   })();
 </script>
-
 
 
 
